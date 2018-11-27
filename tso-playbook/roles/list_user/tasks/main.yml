@@ -1,0 +1,18 @@
+---
+
+- block:
+    - name: list ALL users
+      shell: | 
+        awk -F':' '{print "username: " $1 " uid: " $3 " group: " $4  " description: " $5 " home: " $6 " shell: " $7}' /etc/passwd
+      register: out
+    - debug: var=out.stdout_lines
+  when: uname | default("") == ""
+
+- block: 
+    - name: list user
+      shell: | 
+        awk -F':' '{print "username: " $1 " uid: " $3 " group: " $4  " description: " $5 " home: " $6 " shell: " $7}' /etc/passwd | grep {{ uname }}
+      register: out
+      ignore_errors: true
+    - debug: var=out.stdout_lines 
+  when: uname | default("") != ""      

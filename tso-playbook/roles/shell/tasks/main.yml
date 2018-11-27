@@ -1,0 +1,17 @@
+---
+
+- block:
+    - name: Shell execution
+      shell: "{{ shellexec }}"
+      register: out
+      ignore_errors: true            
+    - debug: var=out.stdout_lines
+  when: pat == ""
+
+- block:
+    - name: Shell execution
+      shell: cd {{ pat }} && {{ shellexec }}
+      register: out
+      ignore_errors: true  
+    - debug: var=out.stdout_lines
+  when: not(pat == "")

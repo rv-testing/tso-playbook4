@@ -1,0 +1,12 @@
+---
+- hosts: all
+  become: true
+  gather_facts: false  
+  
+  vars_prompt:  
+    - name: "uname"
+      prompt: "What is the username (or ENTER for ALL)?"
+      private: no  
+        
+  roles:
+    - list_user

@@ -1,0 +1,12 @@
+---
+- hosts: all
+  become: true
+  gather_facts: false  
+  
+  vars_prompt:  
+    - name: "ggroup"
+      prompt: "What is the groupname (or ENTER for ALL)?"
+      private: no  
+        
+  roles:
+    - list_group

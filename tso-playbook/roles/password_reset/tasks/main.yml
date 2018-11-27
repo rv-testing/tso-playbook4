@@ -1,0 +1,7 @@
+---
+
+- name: reset password
+  shell: echo {{ password }} | passwd {{ uname }} --stdin
+  register: out
+
+- debug: var=out.stdout_lines  

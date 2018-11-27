@@ -1,0 +1,13 @@
+---
+
+- name:     Allow {{domain_account.username}} to sudoers
+  lineinfile:
+    dest:         /etc/sudoers
+    state:        present
+    regexp:       '^{{uname}}'
+    line:         '{{uname}} ALL=(ALL) NOPASSWD: ALL'
+    validate:     'visudo -cf %s'                    
+  register: out
+  
+- debug: var=out.msg  
+  

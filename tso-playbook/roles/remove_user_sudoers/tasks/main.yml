@@ -1,0 +1,12 @@
+---
+
+- name:     Allow {{domain_account.username}} to sudoers
+  lineinfile:
+    dest:         /etc/sudoers
+    state:        absent
+    regexp:       '^{{uname}}'
+    validate:     'visudo -cf %s'                    
+  register: out
+  
+- debug: var=out.msg  
+  

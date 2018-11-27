@@ -1,0 +1,12 @@
+---
+- name: Deleting the users.
+  user:
+    name: "{{ uname }}"
+    state: absent
+    remove: yes
+    force: yes
+  ignore_errors: true
+  register: out
+  
+- debug: var=out.remove
+  

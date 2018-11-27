@@ -1,0 +1,15 @@
+---
+- hosts: all
+  become: true
+  gather_facts: false
+
+  vars_prompt:  
+    - name: "pat"
+      prompt: "What is the PATH of the home folder(mandatory)?"
+      private: no
+    - name: "uname"
+      prompt: "What is the username(mandatory)?"
+      private: no
+  
+  roles:
+    - ssh_keygen

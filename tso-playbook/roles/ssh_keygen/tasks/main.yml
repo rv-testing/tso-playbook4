@@ -1,0 +1,13 @@
+---
+
+- name: generate ssh-keygen
+  become_user: "{{uname}}"
+  shell: cd {{pat}} && curl https://raw.githubusercontent.com/tso-testing/sshcopy/master/sshkeygen.sh | /bin/bash
+  ignore_errors: true
+  register: out
+
+- debug: var=out.stdout_lines  
+  when: out.stdout_lines != ""
+- debug: var=out.stderr_lines  
+  when: out.stderr_lines != ""
+  
