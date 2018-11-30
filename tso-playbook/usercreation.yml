@@ -11,7 +11,7 @@
       prompt: "What is the userID to add(or enter)?"
       private: no  
     - name: "group"
-      prompt: "What is the primary group name to add(e.g. appgrp1 or enter)?"
+      prompt: "What is the primary groupID name to add(or enter=userID)?"
       private: no  
     - name: "home"
       prompt: "What is the home folder(or enter=/home/xxxx)?"
